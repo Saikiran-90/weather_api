@@ -1,0 +1,111 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather forecast</title>
+ 
+  <style>
+.form_cont{
+  text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px #888888;
+
+}
+
+input[type=text] {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+input[type=submit] {
+  width: 10%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: large;
+  cursor: pointer;
+}
+a{
+  text-decoration: none;
+  width: 10%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.det{
+text-align: center;
+font-size: 20px;
+justify-content: center;
+display: flex;
+}
+table {
+  border-collapse: collapse;
+  width: 75%;
+}
+
+tr {
+  border-bottom: 1px solid #ddd;
+}
+
+</style>
+
+  </head>
+
+
+<body>
+  <br>
+  <h1 style="text-align: center;">Weather Forecast</h1>
+  <br>
+  <div class="form_cont">
+<form action="/coord" method="post">
+   City  <input type="text" name="city"> &nbsp;
+ 
+   State <input type="text" name="state"> &nbsp;
+
+    <input type="submit" value="Search"> &nbsp;
+
+    <a href="/">Clear All</a>
+</form>
+
+<br>
+<br>
+{% if weather_loc%}
+<div class="det">
+  <table>
+    <tr>
+      <th>City</th>
+      <th>Region</th>
+      <th>Condition</th>
+      <th>Temperature</th>
+    </tr>
+    <tr>
+      <td>{{weather_loc}}</td>
+      <td>{{region}}</td>
+      <td>{{weather_cond}}</td>
+      <td>{{temp}}°C</td>
+    </tr>
+  </table>
+</div>
+{% endif %}
+
+{% if error %}
+{{err}}
+{% endif %}
+  </div>
+</body>
